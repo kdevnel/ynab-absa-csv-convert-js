@@ -45,6 +45,15 @@ function modifyValues(object, key, value) {
       break;
     case "Description":
       // modify the description
+      if (value.startsWith("POS", 0)) {
+        value = true;
+      }
+      // switch (value.substr(0, 12)) {
+      //   case "POS PURCHASE":
+      //     value = "Case: POS PURCHASE";
+      //     //output = testString.substr(testString.indexOf(") ") + 2);
+      //     break;
+      // }
       break;
   }
 
