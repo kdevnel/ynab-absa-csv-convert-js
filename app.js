@@ -8,7 +8,7 @@
 
 const uploadForm = document.getElementById("fileForm");
 const csvFile = document.getElementById("csvUpload");
-const preview = document.getElementById("previewFile");
+const preview = document.getElementById("filePreview");
 
 /**
  * Convert the CSV to an array using the header row as keys
@@ -25,22 +25,19 @@ function csvToArray(str) {
   const rows = str.slice(str.indexOf("\n") + 1).split("\n");
 
   // Map the rows into their own key:value pairs inside a new object
-  const arr = rows.map((row) => {
+  const arr = rows.map(function (row) {
     const values = row.split(delimiter);
-    const el = headers.reduce((object, header, index) => {
+    const el = headers.reduce(function (object, header, index) {
       modifyValues(object, header, values[index]);
-      // object[header] = values[index];
       return object;
     }, {});
     return el;
   });
-
   console.log(arr);
   return arr;
 }
 
 function modifyValues(object, key, value) {
-  // let output = "";
   switch (key) {
     case "Date":
       //modify the date
@@ -48,15 +45,6 @@ function modifyValues(object, key, value) {
       break;
     case "Description":
       // modify the description
-      if (value.startsWith("POS", 0)) {
-        value = true;
-      }
-      // switch (value.substr(0, 12)) {
-      //   case "POS PURCHASE":
-      //     value = "Case: POS PURCHASE";
-      //     //output = testString.substr(testString.indexOf(") ") + 2);
-      //     break;
-      // }
       break;
   }
 
@@ -75,7 +63,7 @@ uploadForm.addEventListener("submit", (e) => {
   reader.onload = function (e) {
     const text = e.target.result;
     const data = csvToArray(text);
-    document.getElementById("filePreview").innerText = JSON.stringify(data);
+    preview.innerText = JSON.stringify(data);
   };
 
   reader.readAsText(file);
