@@ -57,14 +57,19 @@ function modifyValues(object, key, value) {
 uploadForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const file = csvFile.files[0];
-  const reader = new FileReader();
 
-  // Define what happens once the FileReader has completed reading
-  reader.onload = function (e) {
-    const text = e.target.result;
-    const data = csvToArray(text);
-    preview.innerText = JSON.stringify(data);
-  };
+  if (file) {
+    const reader = new FileReader();
 
-  reader.readAsText(file);
+    // Define what happens once the FileReader has completed reading
+    reader.onload = function (e) {
+      const text = e.target.result;
+      const data = csvToArray(text);
+      preview.innerText = JSON.stringify(data);
+    };
+
+    reader.readAsText(file);
+  } else {
+    preview.innerText = "Please choose a file";
+  }
 });
