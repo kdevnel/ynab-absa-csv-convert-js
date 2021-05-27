@@ -92,6 +92,9 @@ function outputHTML(arr) {
 
 uploadForm.addEventListener("submit", (e) => {
   e.preventDefault();
+  if ( 0 === csvFile.files.length ) {
+    return;
+  }
   const file = csvFile.files[0];
 
   if (file) {
