@@ -12,6 +12,7 @@ function csvToArray(str) {
   delimiter = /,(?=(?:(?:[^"]*"){2})*[^"]*$)/;
   // Split the header row into the header variable
   const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
+  headers.push("Memo");
 
   // Slice the CSV data from the end of the header (+1) and then split at each row
   const rows = str.slice(str.indexOf("\n") + 1).split("\n");
@@ -47,7 +48,7 @@ function modifyValues(object, key, value) {
         switch (value.substr(0, 12)) {
           case "POS PURCHASE":
             memo = "Case: POS PURCHASE";
-            //memo = value.substr(value.indexOf(") ") + 2);
+            value = value.substr(value.indexOf(") ") + 2);
             break;
           case "POS CARD REF":
             value = "Case: POS CARD REFUND";
@@ -55,12 +56,12 @@ function modifyValues(object, key, value) {
         }
       }
       break;
+    case "Memo":
+      value = memo;
+      break;
   }
 
   object[key] = value;
-  // Add the Memo column
-  console.log(memo);
-  object["Memo"] = memo;
 }
 
 /**
