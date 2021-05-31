@@ -45,26 +45,24 @@ function modifyValues(object, key, value) {
       break;
     case "Description":
       if (value.startsWith("POS", 0)) {
+        object["Memo"] = `"${value.substr(0, value.indexOf(") ") + 1)}"`;
         switch (value.substr(0, 12)) {
           case "POS PURCHASE":
-            memo = value.substr(0, value.indexOf(") ") + 1);
             value = value.substr(value.indexOf(") ") + 2);
             break;
           case "POS CARD REF":
-            value = "Case: POS CARD REFUND";
+            value = value.substr(value.indexOf(") ") + 2);
             break;
         }
       }
       break;
-    case "Memo":
-      value = object["Description"].substr(
-        0,
-        object["Description"].indexOf(") ") + 1
-      );
-      break;
   }
 
-  object[key] = value;
+  if (key !== "Memo") {
+    object[key] = value;
+  } else if (key === "Memo" && !object[key]) {
+    object[key] = `"${memo}"`;
+  }
 }
 
 /**
