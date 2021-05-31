@@ -47,7 +47,7 @@ function modifyValues(object, key, value) {
       if (value.startsWith("POS", 0)) {
         switch (value.substr(0, 12)) {
           case "POS PURCHASE":
-            memo = "Case: POS PURCHASE";
+            memo = value.substr(0, value.indexOf(") ") + 1);
             value = value.substr(value.indexOf(") ") + 2);
             break;
           case "POS CARD REF":
@@ -57,7 +57,10 @@ function modifyValues(object, key, value) {
       }
       break;
     case "Memo":
-      value = memo;
+      value = object["Description"].substr(
+        0,
+        object["Description"].indexOf(") ") + 1
+      );
       break;
   }
 
