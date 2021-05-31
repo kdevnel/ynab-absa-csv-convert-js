@@ -8,9 +8,9 @@ const preview = document.getElementById("filePreview");
  * @param {string} delimiter The delimiter separating the CSV columns
  */
 function csvToArray(str) {
-  // Slice the CSV data until the end of the header row
-  // Split the header row into the header variable
+  // Matches CSV data until the end of the header row
   delimiter = /,(?=(?:(?:[^"]*"){2})*[^"]*$)/;
+  // Split the header row into the header variable
   const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
 
   // Slice the CSV data from the end of the header (+1) and then split at each row
@@ -37,29 +37,30 @@ function csvToArray(str) {
  * @param {string} value the value of the current item
  */
 function modifyValues(object, key, value) {
+  let memo = "";
   switch (key) {
     case "Date":
-      //modify the date
       value = value.replace(/(\d{4})(\d{2})(\d{2})/, "$3-$2-$1");
       break;
     case "Description":
-      // modify the description
       if (value.startsWith("POS", 0)) {
-        value = true;
+        switch (value.substr(0, 12)) {
+          case "POS PURCHASE":
+            memo = "Case: POS PURCHASE";
+            //memo = value.substr(value.indexOf(") ") + 2);
+            break;
+          case "POS CARD REF":
+            value = "Case: POS CARD REFUND";
+            break;
+        }
       }
-      // switch (value.substr(0, 12)) {
-      //   case "POS PURCHASE":
-      //     value = "Case: POS PURCHASE";
-      //     //output = testString.substr(testString.indexOf(") ") + 2);
-      //     break;
-      // }
       break;
   }
 
-  // Assign the updated values to the object
   object[key] = value;
   // Add the Memo column
-  object["Memo"] = "";
+  console.log(memo);
+  object["Memo"] = memo;
 }
 
 /**
@@ -101,7 +102,7 @@ function outputHTML(arr) {
 
 uploadForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  if ( 0 === csvFile.files.length ) {
+  if (0 === csvFile.files.length) {
     return;
   }
   const file = csvFile.files[0];
