@@ -1,11 +1,3 @@
-/**
- * 1. Upload a CSV file
- * 2. Process the CSV file
- * 3. Modify the data to the correct format
- * 4. Rearrange the columns
- * 5. Export a new CSV file
- */
-
 const uploadForm = document.getElementById("fileForm");
 const csvFile = document.getElementById("csvUpload");
 const preview = document.getElementById("filePreview");
@@ -37,6 +29,13 @@ function csvToArray(str) {
   return arr;
 }
 
+/**
+ * Take the raw CSV data and manipulate it into a usable format
+ *
+ * @param {object} object an object containing a single row of CSV data
+ * @param {string} key the key for the current item
+ * @param {string} value the value of the current item
+ */
 function modifyValues(object, key, value) {
   switch (key) {
     case "Date":
@@ -63,17 +62,62 @@ function modifyValues(object, key, value) {
   object["Memo"] = "";
 }
 
+/**
+ * Take an array of objects and display it as a table in HTML
+ *
+ * @param {array} arr An array of objects for each line of CSV data
+ * @returns {string}
+ */
+function outputHTML(arr) {
+  let html = `
+    <table>
+      <thead>
+        <th>Date</th>
+        <th>Memo</th>
+        <th>Description</th>
+        <th>Amount</th>
+        <th>Balance</th>
+      </thead>
+  `;
+
+  for (let i = 0; i < arr.length; i++) {
+    html += `
+      <tr>
+        <td>${arr[i].Date}</td>
+        <td>${arr[i].Memo}</td>
+        <td>${arr[i].Description}</td>
+        <td>${arr[i].Amount}</td>
+        <td>${arr[i].Balance}</td>
+      </tr>
+    `;
+  }
+
+  html += `
+    </table>
+  `;
+
+  return html;
+}
+
 uploadForm.addEventListener("submit", (e) => {
   e.preventDefault();
+  if ( 0 === csvFile.files.length ) {
+    return;
+  }
   const file = csvFile.files[0];
-  const reader = new FileReader();
 
-  // Define what happens once the FileReader has completed reading
-  reader.onload = function (e) {
-    const text = e.target.result;
-    const data = csvToArray(text);
-    preview.innerText = JSON.stringify(data);
-  };
+  if (file) {
+    const reader = new FileReader();
 
-  reader.readAsText(file);
+    // Define what happens once the FileReader has completed reading
+    reader.onload = function (e) {
+      const text = e.target.result;
+      const data = csvToArray(text);
+      preview.innerHTML = outputHTML(data);
+    };
+
+    reader.readAsText(file);
+  } else {
+    preview.innerText = "Please choose a file";
+  }
 });
