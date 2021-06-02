@@ -1,0 +1,111 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+form {
+  border: 1px solid #333;
+  width: max-content;
+  padding: 1em;
+  background-color: #eee;
+  margin-bottom: 1em;
+}
+
+button {
+  /* remove default behavior */
+  appearance: none;
+  -webkit-appearance: none;
+
+  /* usual styles */
+  padding: 10px;
+  border: none;
+  background-color: #3f51b5;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+#filePreview {
+  margin-top: 1em;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/*
+Media Queries
+*/
+@media only screen and (max-width: 600px) {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    border: 1px solid #ccc;
+  }
+
+  td {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+    padding: 12px 12px 12px 120px;
+    min-height: 44px;
+  }
+
+  td:before {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 120px;
+    padding-right: 10px;
+    white-space: nowrap;
+    font-weight: 600;
+  }
+
+  /*
+	Label the data
+	*/
+  td:nth-of-type(1):before {
+    content: "Date";
+  }
+  td:nth-of-type(2):before {
+    content: "Memo";
+  }
+  td:nth-of-type(3):before {
+    content: "Description";
+  }
+  td:nth-of-type(4):before {
+    content: "Amount";
+  }
+  td:nth-of-type(5):before {
+    content: "Balance";
+  }
+}

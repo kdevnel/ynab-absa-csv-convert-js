@@ -14,6 +14,4 @@ The converter does the following:
 - Download the codebase to your computer
 - Open index.html in your preferred browser (tested with Firefox)
 - Use the /testing/input-sample.csv file in the file uploader
-- Currently this will do some basic initial processing:
-  - Adds the memo column
-  - Changes the date format
+- You should see an array of objects logged to the console and a table containing the formatted CSV data on the page
