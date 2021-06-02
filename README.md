@@ -14,4 +14,4 @@ The converter does the following:
 - Download the codebase to your computer
 - Open index.html in your preferred browser (tested with Firefox)
 - Use the /testing/input-sample.csv file in the file uploader
-- You should an array of objects logged to the console and a table containing the formatted CSV data on the page
+- You should see an array of objects logged to the console and a table containing the formatted CSV data on the page
