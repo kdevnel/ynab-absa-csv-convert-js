@@ -1,5 +1,6 @@
 import "./css/style.css";
 import csvToArray from "./js/csvToArray.js";
+import { exportFile, generateCSV } from "./js/generateCSV.js";
 import generateTable from "./js/generateTable.js";
 
 const uploadForm = document.getElementById("fileForm");
@@ -20,7 +21,10 @@ uploadForm.addEventListener("submit", (e) => {
     reader.onload = function (e) {
       const text = e.target.result;
       const data = csvToArray(text);
+      console.log(data);
       preview.innerHTML = generateTable(data);
+      const csvContent = generateCSV(data);
+      exportFile(csvContent);
     };
 
     reader.readAsText(file);
