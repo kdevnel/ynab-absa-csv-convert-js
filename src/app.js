@@ -1,3 +1,4 @@
+import "./css/style.css";
 import csvToArray from "./js/csvToArray.js";
 import generateTable from "./js/generateTable.js";
 

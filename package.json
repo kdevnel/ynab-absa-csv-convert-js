@@ -1,0 +1,32 @@
+{
+  "name": "ynab-absa-csv-convert",
+  "version": "1.0.0",
+  "description": "A JavaScript CSV converter to make Absa Bank (South Africa) statements compatible with You Need A Budget (YNAB).",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kdevnel/ynab-absa-csv-convert-js.git"
+  },
+  "keywords": [
+    "csv",
+    "banking"
+  ],
+  "author": "kdevnel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kdevnel/ynab-absa-csv-convert-js/issues"
+  },
+  "homepage": "https://github.com/kdevnel/ynab-absa-csv-convert-js#readme",
+  "devDependencies": {
+    "css-loader": "^5.2.6",
+    "html-webpack-plugin": "^5.3.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
