@@ -51,10 +51,7 @@ function exportFile(csv) {
       link.setAttribute("href", url);
       link.setAttribute("download", fileName);
       link.textContent = "test";
-      // link.style.visibility = "hidden";
       document.body.appendChild(link);
-      // link.click();
-      // document.body.removeChild(link);
     }
   }
 }
