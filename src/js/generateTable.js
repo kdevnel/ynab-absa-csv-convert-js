@@ -28,6 +28,7 @@ function generateTable(csvArray) {
       const cell = document.createElement("td");
       const cellText = document.createTextNode(rowArray[j]);
       cell.appendChild(cellText);
+      cell.setAttribute("data-header", headers[j]);
       row.appendChild(cell);
     }
 
