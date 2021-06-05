@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+  <body>
+    <h1>YNAB Absa CSV Converter</h1>
+    <div>
+      <form id="fileForm">
+        <input id="csvUpload" type="file" accept=".csv" />
+        <button type="submit" name="submit" value="submit">Submit</button>
+      </form>
+      <hr />
+      <div id="filePreview"></div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
