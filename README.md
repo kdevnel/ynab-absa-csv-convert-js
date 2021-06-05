@@ -16,4 +16,5 @@ The converter does the following:
 - Start the dev server by running `npm start`
 - The app should load in your browser and use live reloading
 - Use the /testing/input-sample.csv file in the file uploader
-- You should see an array of objects logged to the console and a table containing the formatted CSV data on the page
+- You should see a dynamically generatedtable containing the formatted CSV data on the page
+- You should see a download button to download a CSV file to your computer

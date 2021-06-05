@@ -51,7 +51,7 @@ function exportFile(csv, btnElement) {
       link.setAttribute("href", url);
       link.setAttribute("download", fileName);
       link.classList.add("button");
-      link.textContent = "test";
+      link.textContent = "Download CSV";
       btnElement.appendChild(link);
     }
   }
