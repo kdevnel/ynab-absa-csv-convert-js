@@ -32,7 +32,6 @@ function csvToArray(str) {
     }, {});
     return el;
   });
-  console.log(arr);
   return arr;
 }
 

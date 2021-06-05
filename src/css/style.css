@@ -16,7 +16,8 @@ form {
   margin-bottom: 1em;
 }
 
-button {
+button,
+a.button {
   /* remove default behavior */
   appearance: none;
   -webkit-appearance: none;
@@ -28,6 +29,7 @@ button {
   color: #fff;
   font-weight: 600;
   border-radius: 5px;
+  text-decoration: none;
 }
 
 #filePreview {
