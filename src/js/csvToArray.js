@@ -11,7 +11,7 @@ function csvToArray(str) {
     .slice(0, str.indexOf("\n"))
     .toLowerCase()
     .split(delimiter);
-  headers.push("memo");
+  headers.splice(1, 0, "memo");
 
   // Slice the CSV data from the end of the header (+1) and then split at each row
   // Also removes any empty lines
@@ -25,6 +25,7 @@ function csvToArray(str) {
   // Map the rows into their own key:value pairs inside a new object
   const arr = rows.map(function (row) {
     const values = row.split(delimiter);
+    values.splice(1, 0, "");
     const el = headers.reduce(function (object, header, index) {
       modifyValues(object, header, values[index]);
       return object;
