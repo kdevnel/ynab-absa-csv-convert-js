@@ -9,13 +9,25 @@
   <body>
     <h1>YNAB Absa CSV Converter</h1>
     <div>
-      <form id="fileForm">
-        <input id="csvUpload" type="file" accept=".csv" />
-        <button type="submit" name="submit" value="submit">Submit</button>
+      <form id="fileForm" class="file-upload-form">
+        <input
+          id="csvUpload"
+          class="file-upload-input"
+          type="file"
+          accept=".csv"
+        />
+        <button
+          class="file-upload button"
+          type="submit"
+          name="submit"
+          value="submit"
+        >
+          Submit
+        </button>
       </form>
-      <div id="downloadBtn"></div>
+      <div id="downloadBtn" class="button-container"></div>
       <hr />
-      <div id="filePreview"></div>
+      <div id="filePreview" class="file-preview-container"></div>
     </div>
     <script src="app.js"></script>
   </body>

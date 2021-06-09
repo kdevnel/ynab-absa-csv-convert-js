@@ -1,3 +1,16 @@
+/* Variables */
+$primary-border-color: #333333;
+$primary-background-color: #eeeeee;
+
+$borders: 1px solid $primary-border-color;
+
+$primary-spacing: 1em;
+$secondary-spacing: 0.75em;
+$primary-border-radius: 5px;
+
+$mobile-primary-spacing: 12px;
+$mobile-secondary-spacing: 120px;
+
 *,
 *:before,
 *:after {
@@ -8,32 +21,31 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-form {
-  border: 1px solid #333;
+.file-upload-form {
+  border: $borders;
   width: max-content;
-  padding: 1em;
-  background-color: #eee;
-  margin-bottom: 1em;
+  padding: $primary-spacing;
+  background-color: $primary-background-color;
+  margin-bottom: $primary-spacing;
 }
 
-button,
-a.button {
+.button {
   /* remove default behavior */
   appearance: none;
   -webkit-appearance: none;
 
   /* usual styles */
-  padding: 10px;
+  padding: $secondary-spacing;
   border: none;
   background-color: #3f51b5;
   color: #fff;
   font-weight: 600;
-  border-radius: 5px;
+  border-radius: $primary-border-radius;
   text-decoration: none;
 }
 
-#filePreview {
-  margin-top: 1em;
+.file-preview-container {
+  margin-top: $primary-spacing;
 }
 
 table {
@@ -45,12 +57,12 @@ th {
 }
 th,
 td {
-  padding: 15px;
+  padding: $primary-spacing;
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  border-bottom: $borders;
 }
 tr:nth-child(even) {
-  background-color: #f2f2f2;
+  background-color: $primary-background-color;
 }
 
 /*
@@ -73,23 +85,24 @@ Media Queries
   }
 
   tr {
-    border: 1px solid #ccc;
+    border: 1px solid $primary-border-color;
   }
 
   td {
     border: none;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid $primary-border-color;
     position: relative;
-    padding: 12px 12px 12px 120px;
+    padding: $mobile-primary-spacing;
+    padding-left: $mobile-secondary-spacing;
     min-height: 44px;
   }
 
   td:before {
     position: absolute;
-    top: 12px;
-    left: 12px;
-    width: 120px;
-    padding-right: 10px;
+    top: $mobile-primary-spacing;
+    left: $mobile-primary-spacing;
+    padding-right: $mobile-primary-spacing;
+    width: $mobile-secondary-spacing;
     white-space: nowrap;
     font-weight: 600;
     text-transform: capitalize;
