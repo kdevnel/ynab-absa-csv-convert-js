@@ -23,7 +23,7 @@ uploadForm.addEventListener("submit", (e) => {
       const text = e.target.result;
       const data = csvToArray(text);
       console.log(data);
-      preview.appendChild(generateTable(data));
+      preview.innerHTML = generateTable(data);
       const csvContent = generateCSV(data);
       exportFile(csvContent, downloadBtn);
     };
