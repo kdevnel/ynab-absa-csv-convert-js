@@ -1,7 +1,7 @@
-import "./css/style.css";
 import csvToArray from "./js/csvToArray.js";
 import { exportFile, generateCSV } from "./js/generateCSV.js";
 import generateTable from "./js/generateTable.js";
+import "./scss/style.scss";
 
 const uploadForm = document.getElementById("fileForm");
 const csvFile = document.getElementById("csvUpload");

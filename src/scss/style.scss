@@ -1,0 +1,120 @@
+/* Variables */
+$primary-border-color: #333333;
+$primary-background-color: #eeeeee;
+
+$borders: 1px solid $primary-border-color;
+
+$primary-spacing: 1em;
+$secondary-spacing: 0.75em;
+$primary-border-radius: 3px;
+
+$mobile-primary-spacing: 12px;
+$mobile-secondary-spacing: 120px;
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.file-upload-form {
+  border: $borders;
+  width: max-content;
+  padding: $primary-spacing;
+  background-color: $primary-background-color;
+  margin-bottom: $primary-spacing;
+}
+
+.button-container {
+  display: flex;
+}
+
+.button {
+  /* remove default behavior */
+  appearance: none;
+  -webkit-appearance: none;
+
+  /* usual styles */
+  padding: $secondary-spacing;
+  border: none;
+  background-color: #3f51b5;
+  color: #fff;
+  font-weight: 600;
+  border-radius: $primary-border-radius;
+  text-decoration: none;
+}
+
+.file-preview-container {
+  margin-top: $primary-spacing;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th {
+    text-transform: capitalize;
+  }
+  th,
+  td {
+    padding: $primary-spacing;
+    border-bottom: $borders;
+  }
+  tr:nth-child(even) {
+    background-color: $primary-background-color;
+  }
+
+  /**
+   * Table - Mobile responsive styles
+   */
+  @media only screen and (max-width: 600px) {
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+      display: block;
+    }
+
+    thead {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+
+    tr {
+      border: $borders;
+    }
+
+    td {
+      border: none;
+      border-bottom: $borders;
+      position: relative;
+      padding: $mobile-primary-spacing;
+      padding-left: $mobile-secondary-spacing;
+      min-height: 3em;
+    }
+
+    td:before {
+      position: absolute;
+      top: $mobile-primary-spacing;
+      left: $mobile-primary-spacing;
+      padding-right: $mobile-primary-spacing;
+      width: $mobile-secondary-spacing;
+      white-space: nowrap;
+      font-weight: 600;
+      text-transform: capitalize;
+    }
+
+    /**
+	   * Label the data
+	   */
+    td:before {
+      content: attr(data-header);
+    }
+  }
+}

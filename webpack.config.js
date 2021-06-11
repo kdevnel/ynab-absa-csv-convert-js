@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: "development",
@@ -14,6 +15,9 @@ module.exports = {
       title: "YNAB Absa CSV Converter",
       template: "./src/index.html",
     }),
+    new MiniCssExtractPlugin({
+      filename: "style.css",
+    }),
   ],
   output: {
     filename: "app.js",
@@ -23,8 +27,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        test: /\.s[ac]ss$/i,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
     ],
   },
