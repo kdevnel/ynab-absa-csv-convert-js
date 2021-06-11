@@ -52,7 +52,7 @@ function exportFile(csv, btnElement) {
       link.setAttribute("download", fileName);
       link.classList.add("button");
       link.textContent = "Download CSV";
-      btnElement.appendChild(link);
+      btnElement.innerHTML = link.outerHTML;
     }
   }
 }

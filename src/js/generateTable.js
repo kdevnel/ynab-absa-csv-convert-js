@@ -37,7 +37,7 @@ function generateTable(csvArray) {
 
   table.appendChild(tbody);
 
-  return table;
+  return table.outerHTML;
 }
 
 export default generateTable;
