@@ -12,7 +12,7 @@ The converter does the following:
 ## Setting up the dev environment
 
 - Download the codebase to your computer
-- Navigate to the project folder root and run `npm init`
+- Navigate to the project folder root and run `npm install`
 - Start the dev server by running `npm start`
 - The app should load in your browser and use live reloading
 - Use the /testing/input-sample.csv file in the file uploader
