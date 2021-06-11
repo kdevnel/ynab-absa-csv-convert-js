@@ -1,38 +1,43 @@
 /**
- * Take an array of objects and display it as a table in HTML
+ * Take an array of objects and generate table markup
  *
- * @param {array} arr An array of objects for each line of CSV data
- * @returns {string}
+ * @param {array} csvArray An array of objects for each line of CSV data
+ * @returns {object}
  */
-function generateTable(arr) {
-  let html = `
-    <table>
-      <thead>
-        <th>Date</th>
-        <th>Memo</th>
-        <th>Description</th>
-        <th>Amount</th>
-        <th>Balance</th>
-      </thead>
-  `;
+function generateTable(csvArray) {
+  const headers = Object.keys(csvArray[0]);
 
-  for (let i = 0; i < arr.length; i++) {
-    html += `
-      <tr>
-        <td>${arr[i].date}</td>
-        <td>${arr[i].memo}</td>
-        <td>${arr[i].description}</td>
-        <td>${arr[i].amount}</td>
-        <td>${arr[i].balance}</td>
-      </tr>
-    `;
+  const table = document.createElement("table");
+  const thead = table.createTHead();
+
+  for (let i = 0; i < headers.length; i++) {
+    const th = document.createElement("th");
+    const thText = document.createTextNode(headers[i]);
+    th.setAttribute("data-header", headers[i]);
+    th.appendChild(thText);
+    thead.appendChild(th);
   }
 
-  html += `
-    </table>
-  `;
+  const tbody = document.createElement("tbody");
 
-  return html;
+  for (let i = 0; i < csvArray.length; i++) {
+    const row = document.createElement("tr");
+    const rowArray = Object.values(csvArray[i]);
+
+    for (let j = 0; j < rowArray.length; j++) {
+      const cell = document.createElement("td");
+      const cellText = document.createTextNode(rowArray[j]);
+      cell.appendChild(cellText);
+      cell.setAttribute("data-header", headers[j]);
+      row.appendChild(cell);
+    }
+
+    tbody.appendChild(row);
+  }
+
+  table.appendChild(tbody);
+
+  return table.outerHTML;
 }
 
 export default generateTable;

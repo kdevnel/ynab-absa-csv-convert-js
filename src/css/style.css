@@ -16,7 +16,8 @@ form {
   margin-bottom: 1em;
 }
 
-button {
+button,
+a.button {
   /* remove default behavior */
   appearance: none;
   -webkit-appearance: none;
@@ -28,6 +29,7 @@ button {
   color: #fff;
   font-weight: 600;
   border-radius: 5px;
+  text-decoration: none;
 }
 
 #filePreview {
@@ -38,7 +40,9 @@ table {
   width: 100%;
   border-collapse: collapse;
 }
-
+th {
+  text-transform: capitalize;
+}
 th,
 td {
   padding: 15px;
@@ -62,7 +66,7 @@ Media Queries
     display: block;
   }
 
-  thead tr {
+  thead {
     position: absolute;
     top: -9999px;
     left: -9999px;
@@ -88,24 +92,13 @@ Media Queries
     padding-right: 10px;
     white-space: nowrap;
     font-weight: 600;
+    text-transform: capitalize;
   }
 
   /*
 	Label the data
 	*/
-  td:nth-of-type(1):before {
-    content: "Date";
-  }
-  td:nth-of-type(2):before {
-    content: "Memo";
-  }
-  td:nth-of-type(3):before {
-    content: "Description";
-  }
-  td:nth-of-type(4):before {
-    content: "Amount";
-  }
-  td:nth-of-type(5):before {
-    content: "Balance";
+  td:before {
+    content: attr(data-header);
   }
 }

@@ -36,7 +36,7 @@ function jsonToCSV(json) {
   return string;
 }
 
-function exportFile(csv) {
+function exportFile(csv, btnElement) {
   const fileName = "export.csv";
   const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
   if (navigator.msSaveBlob) {
@@ -50,8 +50,9 @@ function exportFile(csv) {
       const url = URL.createObjectURL(blob);
       link.setAttribute("href", url);
       link.setAttribute("download", fileName);
-      link.textContent = "test";
-      document.body.appendChild(link);
+      link.classList.add("button");
+      link.textContent = "Download CSV";
+      btnElement.innerHTML = link.outerHTML;
     }
   }
 }

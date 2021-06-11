@@ -6,6 +6,7 @@ import generateTable from "./js/generateTable.js";
 const uploadForm = document.getElementById("fileForm");
 const csvFile = document.getElementById("csvUpload");
 const preview = document.getElementById("filePreview");
+const downloadBtn = document.getElementById("downloadBtn");
 
 uploadForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -24,7 +25,7 @@ uploadForm.addEventListener("submit", (e) => {
       console.log(data);
       preview.innerHTML = generateTable(data);
       const csvContent = generateCSV(data);
-      exportFile(csvContent);
+      exportFile(csvContent, downloadBtn);
     };
 
     reader.readAsText(file);
