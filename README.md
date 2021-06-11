@@ -9,12 +9,16 @@ The converter does the following:
 - Splits the descriptions into Details and Notes columns for ease of use
 - Converts the CSV format into a more standardised format with quotes around all description and memo fields
 
+## Usage
+
+The latest bundled version is found inside the `/dist` folder - you can download the folder and open index.html in your browser.
+
 ## Setting up the dev environment
 
 - Download the codebase to your computer
-- Navigate to the project folder root and run `npm init`
+- Navigate to the project folder root and run `npm install`
 - Start the dev server by running `npm start`
 - The app should load in your browser and use live reloading
 - Use the /testing/input-sample.csv file in the file uploader
-- You should see a dynamically generatedtable containing the formatted CSV data on the page
-- You should see a download button to download a CSV file to your computer
+- You should see a dynamically generated table containing the formatted CSV data on the page
+- You should see a download button to download a formatted CSV file to your computer
