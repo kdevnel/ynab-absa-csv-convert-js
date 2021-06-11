@@ -8,6 +8,8 @@ const csvFile = document.getElementById("csvUpload");
 const preview = document.getElementById("filePreview");
 const downloadBtn = document.getElementById("downloadBtn");
 
+console.log(`****TEST****`);
+
 uploadForm.addEventListener("submit", (e) => {
   e.preventDefault();
   if (0 === csvFile.files.length) {
