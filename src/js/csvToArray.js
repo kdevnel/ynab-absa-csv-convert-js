@@ -53,7 +53,6 @@ function modifyValues(object, key, value) {
   if (typeof value === "string") {
     value = value.replace(/"([^"]+(?="))"/g, "$1");
   }
-  let memo = "";
   switch (key) {
     case "date":
       value = value.replace(/(\d{4})(\d{2})(\d{2})/, "$3-$2-$1");
@@ -65,13 +64,14 @@ function modifyValues(object, key, value) {
       }
       value = `"${value}"`;
       break;
+    case "memo":
+      if (!value) {
+        value = '""';
+      }
+      break;
   }
 
-  if (key !== "memo") {
-    object[key] = value;
-  } else if (key === "memo" && !object[key]) {
-    object[key] = `"${memo}"`;
-  }
+  object[key] = value;
 }
 
 export default csvToArray;
