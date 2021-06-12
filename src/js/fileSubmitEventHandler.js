@@ -5,6 +5,11 @@ import processInputCsv from "./processInputCsv.js";
 const csvFile = document.getElementById("csvUpload");
 const preview = document.getElementById("filePreview");
 
+/**
+ * Callback function for the file submit event listener
+ * @param {object} event
+ * @returns
+ */
 function fileSubmitEventHandler(event) {
   event.preventDefault();
   if (0 === csvFile.files.length) {
