@@ -1,11 +1,11 @@
 /**
  * Take an array of objects and generate table markup
  *
- * @param {array} csvArray An array of objects for each line of CSV data
+ * @param {array} csvDataJson An array of objects for each line of CSV data
  * @returns {object}
  */
-function generateTable(csvArray) {
-  const headers = Object.keys(csvArray[0]);
+function generateTable(csvDataJson) {
+  const headers = Object.keys(csvDataJson[0]);
 
   const table = document.createElement("table");
   const thead = table.createTHead();
@@ -20,19 +20,19 @@ function generateTable(csvArray) {
 
   const tbody = document.createElement("tbody");
 
-  for (let i = 0; i < csvArray.length; i++) {
-    const row = document.createElement("tr");
-    const rowArray = Object.values(csvArray[i]);
+  for (let i = 0; i < csvDataJson.length; i++) {
+    const tr = document.createElement("tr");
+    const rowData = Object.values(csvDataJson[i]);
 
-    for (let j = 0; j < rowArray.length; j++) {
-      const cell = document.createElement("td");
-      const cellText = document.createTextNode(rowArray[j]);
-      cell.appendChild(cellText);
-      cell.setAttribute("data-header", headers[j]);
-      row.appendChild(cell);
+    for (let j = 0; j < rowData.length; j++) {
+      const td = document.createElement("td");
+      const tdText = document.createTextNode(rowData[j]);
+      td.appendChild(tdText);
+      td.setAttribute("data-header", headers[j]);
+      tr.appendChild(td);
     }
 
-    tbody.appendChild(row);
+    tbody.appendChild(tr);
   }
 
   table.appendChild(tbody);

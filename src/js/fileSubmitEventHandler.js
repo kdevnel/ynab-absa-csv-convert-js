@@ -1,10 +1,9 @@
-import csvToArray from "./csvToArray.js";
-import { exportFile, generateCSV } from "./generateCSV.js";
+import { exportFile, generateOutputCsv } from "./generateOutputCsv.js";
 import generateTable from "./generateTable.js";
+import processInputCsv from "./processInputCsv.js";
 
 const csvFile = document.getElementById("csvUpload");
 const preview = document.getElementById("filePreview");
-const downloadBtn = document.getElementById("downloadBtn");
 
 function fileSubmitEventHandler(event) {
   event.preventDefault();
@@ -18,12 +17,12 @@ function fileSubmitEventHandler(event) {
 
     // Define what happens once the FileReader has completed reading
     reader.onload = function (event) {
-      const text = event.target.result;
-      const data = csvToArray(text);
-      console.log(data);
-      preview.innerHTML = generateTable(data);
-      const csvContent = generateCSV(data);
-      exportFile(csvContent, downloadBtn);
+      const rawCsvString = event.target.result;
+      const processedCsvJson = processInputCsv(rawCsvString);
+      console.log(processedCsvJson);
+      preview.innerHTML = generateTable(processedCsvJson);
+      const outputCSV = generateOutputCsv(processedCsvJson);
+      exportFile(outputCSV);
     };
 
     reader.readAsText(file);

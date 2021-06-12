@@ -7,7 +7,7 @@ let headers = [];
  * @param {string} str The string containing the CSV data
  * @param {string} delimiter The delimiter separating the CSV columns
  */
-function csvToArray(str) {
+function processInputCsv(str) {
   // Split the header row into the header variable
   headers = str.slice(0, str.indexOf("\n")).toLowerCase().split(delimiter);
   headers.splice(1, 0, "memo");
@@ -74,4 +74,4 @@ function modifyValues(object, key, value) {
   object[key] = value;
 }
 
-export default csvToArray;
+export default processInputCsv;
