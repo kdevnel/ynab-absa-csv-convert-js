@@ -17,8 +17,8 @@ function fileSubmitEventHandler(event) {
 
     // Define what happens once the FileReader has completed reading
     reader.onload = function (event) {
-      const rawCsvString = event.target.result;
-      const processedCsvJson = processInputCsv(rawCsvString);
+      const inputCsvString = event.target.result;
+      const processedCsvJson = processInputCsv(inputCsvString);
       console.log(processedCsvJson);
       preview.innerHTML = generateTable(processedCsvJson);
       const outputCSV = generateOutputCsv(processedCsvJson);
