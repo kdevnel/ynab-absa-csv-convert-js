@@ -3,6 +3,4 @@ import "./scss/style.scss";
 
 const uploadForm = document.getElementById("fileForm");
 
-uploadForm.addEventListener("submit", (event) => {
-  fileSubmitEventHandler(event);
-});
+uploadForm.addEventListener("submit", fileSubmitEventHandler);

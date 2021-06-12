@@ -1,16 +1,15 @@
+// The delimeter that matches CSV data until the end of the header row
+const delimiter = /,(?=(?:(?:[^"]*"){2})*[^"]*$)/;
+let headers = [];
+
 /**
  * Convert the CSV to an array using the header row as keys
  * @param {string} str The string containing the CSV data
  * @param {string} delimiter The delimiter separating the CSV columns
  */
 function csvToArray(str) {
-  // Matches CSV data until the end of the header row
-  const delimiter = /,(?=(?:(?:[^"]*"){2})*[^"]*$)/;
   // Split the header row into the header variable
-  const headers = str
-    .slice(0, str.indexOf("\n"))
-    .toLowerCase()
-    .split(delimiter);
+  headers = str.slice(0, str.indexOf("\n")).toLowerCase().split(delimiter);
   headers.splice(1, 0, "memo");
 
   // Slice the CSV data from the end of the header (+1) and then split at each row
@@ -23,16 +22,23 @@ function csvToArray(str) {
     });
 
   // Map the rows into their own key:value pairs inside a new object
-  const arr = rows.map(function (row) {
-    const values = row.split(delimiter);
-    values.splice(1, 0, "");
-    const el = headers.reduce(function (object, header, index) {
-      modifyValues(object, header, values[index]);
-      return object;
-    }, {});
-    return el;
-  });
+  const arr = rows.map(splitRowToColumns);
   return arr;
+}
+
+/**
+ * Map a string containing a row of data into their own key:value pairs (columns)
+ * @param {string} row
+ * @returns {string}
+ */
+function splitRowToColumns(row) {
+  const values = row.split(delimiter);
+  values.splice(1, 0, "");
+  const el = headers.reduce(function (object, header, index) {
+    modifyValues(object, header, values[index]);
+    return object;
+  }, {});
+  return el;
 }
 
 /**
