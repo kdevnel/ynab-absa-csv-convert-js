@@ -2,6 +2,27 @@
 const delimiter = /,(?=(?:(?:[^"]*"){2})*[^"]*$)/;
 let headers = [];
 
+const csvConfig = {
+  headers: [
+    {
+      name: "Date",
+      inputName: "Date",
+    },
+    {
+      name: "Description",
+      inputName: "Description",
+    },
+    {
+      name: "Amount",
+      inputName: "Amount",
+    },
+    {
+      name: "Balance",
+      inputName: "Balance",
+    },
+  ],
+};
+
 /**
  * Convert the CSV to an array using the header row as keys
  * @param {string} inputCsvString The string containing the CSV data
@@ -81,4 +102,4 @@ function modifyValues(columnObject, key, value) {
   columnObject[key] = value;
 }
 
-export default processInputCsv;
+export { processInputCsv, csvConfig };
