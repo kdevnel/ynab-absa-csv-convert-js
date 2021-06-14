@@ -1,6 +1,6 @@
 import CSVFileValidator from "csv-file-validator";
 import fileReader from "./fileReader.js";
-import { csvConfig } from "./processInputCsv/processInputCsv.js";
+import csvConfig from "./processInputCsv/inputCsvStructure.js";
 import resetPage from "./resetPage.js";
 
 const csvFile = document.getElementById("csvUpload");
