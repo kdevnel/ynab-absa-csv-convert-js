@@ -45,7 +45,9 @@ function exportFile(outputCsv) {
     "downloadLinkContainer"
   );
 
-  const exportFileName = "export.csv";
+  const csvFile = document.getElementById("csvUpload").files[0];
+  const fileWithoutExtension = csvFile.name.slice(0, -4);
+  const exportFileName = `${fileWithoutExtension}-export.csv`;
   const blob = new Blob([outputCsv], { type: "text/csv;charset=utf-8;" });
   if (navigator.msSaveBlob) {
     // IE 10+
