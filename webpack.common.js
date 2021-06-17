@@ -3,14 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  //mode: "development",
-  mode: "production",
   entry: "./src/app.js",
-  devtool: "inline-source-map",
-  devServer: {
-    contentBase: "./dist",
-    port: 3000,
-  },
   plugins: [
     new HtmlWebpackPlugin({
       title: "YNAB Absa CSV Converter",
@@ -38,7 +31,4 @@ module.exports = {
       },
     ],
   },
-  // optimization: {
-  //   usedExports: true,
-  // },
 };
