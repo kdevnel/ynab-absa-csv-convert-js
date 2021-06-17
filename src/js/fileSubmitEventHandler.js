@@ -1,9 +1,11 @@
-import { exportFile, generateOutputCsv } from "./generateOutputCsv.js";
-import generateTable from "./generateTable.js";
-import processInputCsv from "./processInputCsv.js";
+import CSVFileValidator from "csv-file-validator";
+import fileReader from "./fileReader.js";
+import csvConfig from "./processInputCsv/inputCsvStructure.js";
+import resetPage from "./resetPage.js";
 
 const csvFile = document.getElementById("csvUpload");
 const preview = document.getElementById("filePreview");
+const errorMessages = document.getElementById("errorMessages");
 
 /**
  * Callback function for the file submit event listener
@@ -16,24 +18,18 @@ function fileSubmitEventHandler(event) {
     return;
   }
   const file = csvFile.files[0];
+  resetPage();
 
-  if (file) {
-    const reader = new FileReader();
-
-    // Define what happens once the FileReader has completed reading
-    reader.onload = function (event) {
-      const inputCsvString = event.target.result;
-      const processedCsvJson = processInputCsv(inputCsvString);
-      console.log(processedCsvJson);
-      preview.innerHTML = generateTable(processedCsvJson);
-      const outputCSV = generateOutputCsv(processedCsvJson);
-      exportFile(outputCSV);
-    };
-
-    reader.readAsText(file);
-  } else {
-    preview.innerText = "Please choose a file";
-  }
+  CSVFileValidator(file, csvConfig).then((csvData) => {
+    csvData.inValidMessages.forEach((message) => {
+      errorMessages.innerHTML = message;
+    });
+    if (csvData.inValidMessages.length === 0 && file) {
+      fileReader(file);
+    } else {
+      preview.innerText = "Please choose a valid file";
+    }
+  });
 }
 
 export default fileSubmitEventHandler;
