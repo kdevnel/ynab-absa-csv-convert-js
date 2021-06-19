@@ -18,10 +18,12 @@ The latest bundled version is found inside the `/dist` folder - you can download
 - Download the codebase to your computer
 - Navigate to the project folder root and run `npm install`
 - Start the dev server by running `npm start`
-- The app should load in your browser and use live reloading
+- The app should load in your browser and use live reloading and inline source-mapping
 - Use the /testing/input-sample.csv file in the file uploader
 - You should see a dynamically generated table containing the formatted CSV data on the page
 - You should see a download button to download a formatted CSV file to your computer
 
 ## Bundling updated files to /dist
-To create a set of bundled files in `/dist` run `npm run build` after following the steps to setup a dev environment.
+
+To create a production-ready set of bundled files in `/dist` run `npm run build` after following the steps to setup a dev environment.
+This will minify the files and use `source-maps`.
