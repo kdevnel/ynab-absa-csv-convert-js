@@ -42,9 +42,13 @@ function splitRowToColumns(row) {
     currentIndex
   ) {
     modifyValues(columnAccumulator, currentHeader, values[currentIndex]);
+    console.log(currentHeader);
+    console.log(columnAccumulator);
     return columnAccumulator;
   },
   {});
+  console.log("Returned columns:");
+  console.log(columns);
   return columns;
 }
 
@@ -79,6 +83,7 @@ function modifyValues(columnObject, key, value) {
   }
 
   columnObject[key] = value;
+  return columnObject;
 }
 
-export default processInputCsv;
+export { processInputCsv, modifyValues };

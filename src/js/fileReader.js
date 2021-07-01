@@ -1,6 +1,6 @@
 import { exportFile, generateOutputCsv } from "./generateOutputCsv.js";
 import generateTable from "./generateTable.js";
-import processInputCsv from "./processInputCsv/processInputCsv.js";
+import { processInputCsv } from "./processInputCsv/processInputCsv.js";
 
 function fileReader(file) {
   const preview = document.getElementById("filePreview");
